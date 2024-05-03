@@ -2,20 +2,19 @@ import React from 'react';
 import ReactDOM from 'react-dom/client';
 import Header from './layout/Header';
 import DestinationIndex from './components/DestinationIndex';
-import { ApiProvider } from '@reduxjs/toolkit/dist/query/react';
-import { destinationAPI } from './api/destinationAPI';
 import DestinationList from './components/DestinationList';
+import { Provider } from 'react-redux';
+import { store } from './Redux/store';
+import RandomDestination from './components/RandomDestination';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
-<ApiProvider api={destinationAPI}>
-  <Header/>
-  <DestinationIndex/>
-  <DestinationList/>
-</ApiProvider>
+    <Provider store={store}>
+      <Header/>
+      <DestinationIndex/>
+      <DestinationList/>
+      <RandomDestination/>
+    </Provider>
   </React.StrictMode>
 );
-
-let a = 10;
-console.log(a); 
